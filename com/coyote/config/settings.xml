@@ -1,0 +1,4 @@
+<settings>
+	<setting name="enable_glacier" value="true"/>
+	<setting name="coyote_js" value="/res/coyote/js"/>
+</settings>

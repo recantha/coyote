@@ -1,0 +1,23 @@
+<components>
+	<family name="dataTypeConvert" model="coyote.util.dataTypeConvert"/>
+	<family name="jQueryUtil" model="coyote.util.jQueryUtil"/>
+	<family name="iconUtil" model="coyote.util.iconUtil"/>
+	<family name="dbUtil" model="coyote.util.dbUtil"/>
+
+	<family name="genericEditor"
+			model="coyote.model.genericEditor"
+			controller="coyote.controller.genericEditor"
+			view="coyote.view.genericEditor"
+	/>
+
+	<!-- do not do this, coyote IS the framework and is loaded by Application.cfc
+	<family name="coyote" model="coyote.coyote"/>
+	 -->
+	<family name="glacier"
+			model="glacier.model.glacier"
+			controller="glacier.controller.glacier"
+			view="glacier.view.glacier"
+			messages="glacier.view.messages"
+			template="glacier.view.template"
+	/>
+</components>

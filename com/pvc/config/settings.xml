@@ -1,0 +1,9 @@
+<settings>
+	<setting name="glacier_ds" value="pottonvineyardchurch_glacier"/>
+	<setting name="glacier_ds_username" value="root"/>
+	<setting name="glacier_ds_password" value="hickup"/>
+
+	<setting name="site_contact" value="mike@recantha.co.uk"/>
+	<setting name="pvc_css" value="/res/pvc/css"/>
+	<setting name="default_template" value="pvc"/>
+</settings>

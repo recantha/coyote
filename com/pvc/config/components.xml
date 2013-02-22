@@ -1,0 +1,4 @@
+<components>
+	<family name="plugins" menu="plugins.menu" contact="plugins.contact"/>
+	<family name="template" pvc="pvc.view.template_pvc"/>
+</components>

@@ -1,0 +1,11 @@
+<settings>
+	<setting name="glacier_url_root" value="/index.cfm/glacier"/>
+	<setting name="glacier_res" value="/res/glacier"/>
+	<setting name="glacier_css" value="/res/glacier/css"/>
+	<setting name="glacier_js" value="/res/glacier/js"/>
+	<setting name="glacier_img" value="/res/glacier/img"/>
+	<setting name="glacier_iconfolder" value="/res/glacier/img/icons"/>
+	<setting name="glacier_iconwidth" value="24"/>
+	<setting name="glacier_ckeditor_path" value="/res/glacier/js/ckeditor_3.6.3"/>
+	<setting name="glacier_ckfinder_path" value="/res/glacier/js/ckfinder_2"/>
+</settings>

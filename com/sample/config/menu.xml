@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu icon_path="/res/recantha/img/icons">
+	<item href="/index.cfm" icon="music_note" label="Home"></item>
+</menu>

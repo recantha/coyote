@@ -169,4 +169,104 @@
 		<cfreturn false>
 	</cffunction>
 
+	<cffunction name="install" returntype="struct" access="public">
+		<cfset var local = {}>
+		<cfset local.result = getResult()>
+
+		<cfsavecontent variable="local.result.output">
+			<cfoutput>
+				<html>
+					<head>
+						<link rel="stylesheet" href="/res/glacier/css/glacier.css"></link>
+					</head>
+	
+					<body>
+						<div style="padding:20px">
+							<div style="float:left"><img src="/res/coyote/img/coyote.jpg"></div>
+							<div style="float:left">
+								<h1>Coyote/Glacier Install</h1>
+
+								<h2>Creating tables</h2>
+								<cfquery datasource="#getSetting('glacier_ds')#" name="local.crt">
+									DROP TABLE IF EXISTS `folder`;
+								</cfquery>
+								<cfquery datasource="#getSetting('glacier_ds')#" name="local.crt">
+									CREATE TABLE `folder` (
+										`id` INT(11) NOT NULL AUTO_INCREMENT,
+										`title` VARCHAR(255) DEFAULT NULL,
+										`path` VARCHAR(255) DEFAULT NULL,
+										`parent_folder_id` INT(11) DEFAULT NULL,
+										`template` VARCHAR(255) DEFAULT NULL,
+										PRIMARY KEY (`id`)
+									);
+								</cfquery>
+								<cfquery datasource="#getSetting('glacier_ds')#" name="local.crt">
+									INSERT INTO `folder`(`id`,`title`,`path`,`parent_folder_id`,`template`) VALUES (1,'Sample',NULL,0,NULL)
+								</cfquery>
+								<cfquery datasource="#getSetting('glacier_ds')#" name="local.get">
+									SELECT * from folder
+								</cfquery>
+								<cfdump var="#local.get#" expand="false" label="Root folder">
+
+								<cfquery datasource="#getSetting('glacier_ds')#" name="local.crt">
+									DROP TABLE IF EXISTS `page`;
+								</cfquery>
+
+								<cfquery datasource="#getSetting('glacier_ds')#" name="local.crt">
+									CREATE TABLE `page` (
+									  `id` INT(11) NOT NULL AUTO_INCREMENT,
+									  `path` VARCHAR(255) DEFAULT NULL,
+									  `folder_id` INT(11) NOT NULL,
+									  `title` VARCHAR(255) NOT NULL,
+									  `headline` VARCHAR(255) DEFAULT NULL,
+									  `body` TEXT,
+									  `code_call` VARCHAR(255) DEFAULT NULL,
+									  `side_title` VARCHAR(255) DEFAULT NULL,
+									  `side_body` TEXT,
+									  `side_code_call` VARCHAR(255) DEFAULT NULL,
+									  PRIMARY KEY (`id`)
+									)
+								</cfquery>
+
+								<cfquery datasource="#getSetting('glacier_ds')#" name="local.crt">
+									DROP TABLE IF EXISTS `sessions`;
+								</cfquery>
+
+								<cfquery datasource="#getSetting('glacier_ds')#" name="local.crt">
+									CREATE TABLE `sessions` (
+									  `id` INT(11) NOT NULL AUTO_INCREMENT,
+									  `session_id` VARCHAR(255) DEFAULT NULL,
+									  `user_id` INT(11) DEFAULT NULL,
+									  `auth_detail` VARCHAR(255) DEFAULT NULL,
+									  PRIMARY KEY (`id`)
+									)
+								</cfquery>
+
+								<cfquery datasource="#getSetting('glacier_ds')#" name="local.crt">
+									DROP TABLE IF EXISTS `users`;
+								</cfquery>
+
+								<cfquery datasource="#getSetting('glacier_ds')#" name="local.crt">
+									CREATE TABLE `users` (
+									  `id` INT(11) NOT NULL AUTO_INCREMENT,
+									  `username` VARCHAR(255) NOT NULL,
+									  `password` VARCHAR(255) NOT NULL,
+									  `root_folder_id` INT(11) DEFAULT NULL,
+									  PRIMARY KEY (`id`)
+									)
+								</cfquery>
+
+								<cfquery datasource="#getSetting('glacier_ds')#" name="local.crt">
+									INSERT  INTO `users`(`id`,`username`,`password`,`root_folder_id`) VALUES (1,'admin','admin',1);
+								</cfquery>
+							</div>
+						</div>
+					</body>
+				</html>
+			</cfoutput>
+		</cfsavecontent>
+
+		<cfreturn local.result>
+	</cffunction>
+
 </cfcomponent>

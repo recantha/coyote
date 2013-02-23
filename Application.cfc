@@ -1,5 +1,5 @@
 <cfcomponent output="true">
-	<cfset this.name = "pottonvineyardchurch">
+	<cfset this.name = "sample">
 
 	<cfset this.mappings.com = getDirectoryfrompath(getCurrenttemplatepath())  & "com">
 
@@ -65,7 +65,11 @@
 		<cfif local.debug><cfoutput><hr>#local.content#<hr></cfoutput></cfif>
 	
 		<cftry>
-			<cfset local.glacierResult = getFactory("glacier.model").onRequestEnd(local.content)>
+			<cfif getScope().script_name neq "/install/index.cfm">
+				<cfset local.glacierResult = getFactory("glacier.model").onRequestEnd(local.content)>
+			<cfelse>
+				<cfset local.glacierResult = getFactory("coyote.model").install()>
+			</cfif>
 	
 			<cfcatch type="any">
 				<cfdump var="#cfcatch#"><cfabort>
@@ -205,6 +209,5 @@
 	
 	<cffunction name="onError">
 		<cfoutput><h1>Standard onError() page</h1></cfoutput>
-		<cfdump var="#arguments#"><cfabort>
 	</cffunction>
 </cfcomponent>

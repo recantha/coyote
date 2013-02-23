@@ -1,6 +1,8 @@
 coyote
 ======
 
+This is currently UNSTABLE - do not use
+
 ColdFusion framework and content management system
 
 Originally written for CF8, now converted for Railo
